@@ -174,7 +174,7 @@ extension Interactor: InteractorMiscellaneous {
         case .clear:
             return
         case .decimal:
-            self.equation.append(opString)
+            return
         case .percent:
             return
         case .sign:
