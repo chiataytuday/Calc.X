@@ -11,6 +11,7 @@ import UIKit
 
 
 protocol PresenterForward {
+    func forwardEquals()
     func forward(number num: Int)
     func forward(operator op: Operation)
     func forward(miscellaneous misc: Miscellaneous)
@@ -42,6 +43,10 @@ class Presenter {
 // Forwards all actions from the UI to the interactor
 
 extension Presenter: PresenterForward {
+    
+    func forwardEquals() {
+        interactor.equals()
+    }
     
     func forward(number num: Int) {
         self.interactor.number(num)

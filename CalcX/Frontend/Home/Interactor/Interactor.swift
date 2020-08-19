@@ -10,6 +10,9 @@ import Expression
 
 // MARK: - Protocols
 
+protocol InteractorEquals {
+    func equals()
+}
 
 protocol InteractorNumber {
     func number(_ num: Int)
@@ -29,55 +32,20 @@ protocol InteractorMiscellaneous {
 
 class Interactor {
     
-    var shouldResetResult = true
-    var shouldResetEquation = true
+    var first: String = "0"
+    var second: String = "0"
+    var operation: Operation?
+    
+    var result = "0"
+    var expression = NSMutableAttributedString(string: "0", attributes: [
+        NSAttributedString.Key.foregroundColor : Color().miscText!
+    ])
     
     var presenter: Presenter!
-    var result: String = "0"
-    var equation: NSMutableAttributedString = NSMutableAttributedString(string: "0", attributes: [
-        NSAttributedString.Key.foregroundColor : Color().miscText!,
-    ])
     
     init(delegate: Any) {
         if let presenter = delegate as? Presenter {
             self.presenter = presenter
-        }
-    }
-    
-    private func hasOperator(_ expression: String) -> (Bool, Operation?) {
-        for (_, char) in expression.enumerated() {
-            switch String(char) {
-            case Operation.add.rawValue:
-                return (true, .add)
-            case Operation.divide.rawValue:
-                return (true, .divide)
-            case Operation.multiply.rawValue:
-                return (true, .multiply)
-            case Operation.subtract.rawValue:
-                return (true, .subtract)
-            default:
-                continue
-            }
-        }
-        return (false, nil)
-    }
-    
-    private func lastIsOperator(_ expression: String) -> Bool {
-        guard let last = expression.last else {
-            return false
-        }
-        
-        switch String(last) {
-        case Operation.add.rawValue:
-            return true
-        case Operation.divide.rawValue:
-            return true
-        case Operation.multiply.rawValue:
-            return true
-        case Operation.subtract.rawValue:
-            return true
-        default:
-            return false
         }
     }
     
@@ -90,27 +58,38 @@ class Interactor {
 extension Interactor: InteractorNumber {
     
     func number(_ num: Int) {
-        
-        let numberString = NSMutableAttributedString(string: String(num), attributes: [
-            NSAttributedString.Key.foregroundColor : Color().miscText!
-        ])
-        
-        if (shouldResetResult) || (result == "0") {
-            self.result = String(num)
+        if let op = operation {
+                    
+            second.append(String(num))
+            if let fir: NSNumber = Double(first) as NSNumber?, let sec: NSNumber = Double(second) as NSNumber? {
+                
+                expression = NSMutableAttributedString(string: "\(fir)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+                expression.append(NSMutableAttributedString(string: " \(op.rawValue) ", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().operate!
+                ]))
+                expression.append(NSMutableAttributedString(string: "\(sec)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ]))
+                
+            }
+            
         } else {
-            self.result.append(String(num))
+            
+            first.append(String(num))
+            if let number: NSNumber = Double(first) as NSNumber? {
+                
+                expression = NSMutableAttributedString(string: "\(number)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+                
+            }
+            
         }
         
-        if (shouldResetEquation) || (equation.string == "0")  {
-            self.equation = numberString
-        } else {
-            self.equation.append(numberString)
-        }
+        presenter.response(equation: self.expression, result: self.result)
         
-        self.shouldResetResult = false
-        self.shouldResetEquation = false
-        
-        self.presenter.response(equation: equation, result: result)
     }
     
 }
@@ -123,42 +102,25 @@ extension Interactor: InteractorOperation {
     
     func operation(_ op: Operation) {
         
-        let opString = NSMutableAttributedString(string: String(op.rawValue), attributes: [
-            NSAttributedString.Key.foregroundColor : Color().operate!,
-        ])
+        var exp = expression.string
+        if exp.first == "-" { exp = String(exp.dropFirst()) }
         
-        let (bool, _) = hasOperator(equation.string)
-        
-        if !bool {
+        if exp.rangeOfCharacter(from: CharacterSet(charactersIn: "-*/+")) != nil {
             
-            self.shouldResetResult = true
-            self.shouldResetEquation = false
-            self.equation.append(opString)
+  
+            
             
         } else {
             
-            if lastIsOperator(equation.string) {
-                
-                self.equation.deleteCharacters(in: NSRange(location: self.equation.length - 1, length: 1))
-                self.equation.append(opString)
-                
-            } else {
-                
-                self.shouldResetResult = true
-                let expression = Expression(self.equation.string)
-                let solution = try! expression.evaluate() as NSNumber
-                self.result = solution.stringValue
-                self.equation = NSMutableAttributedString(string: solution.stringValue, attributes: [
-                    NSAttributedString.Key.foregroundColor : Color().miscText!,
-                ])
-                self.equation.append(opString)
-                
-            }
+            operation = op
+            expression.append(NSMutableAttributedString(string: " \(op.rawValue) ", attributes: [
+                NSAttributedString.Key.foregroundColor : Color().operate!
+            ]))
             
         }
         
+        presenter.response(equation: self.expression, result: self.result)
         
-        self.presenter.response(equation: equation, result: String(result))
     }
     
 }
@@ -178,18 +140,86 @@ extension Interactor: InteractorMiscellaneous {
         case .percent:
             return
         case .sign:
-            return
+            sign()
         default:
             
-            shouldResetResult = true
-            shouldResetEquation = true
-            
+            self.first = "0"
+            self.second = "0"
+            self.operation = nil
             self.result = "0"
-            self.equation = NSMutableAttributedString(string: "0", attributes: [
-                NSAttributedString.Key.foregroundColor : Color().miscText!,
+            self.expression = NSMutableAttributedString(string: "0", attributes: [
+                NSAttributedString.Key.foregroundColor : Color().miscText!
             ])
-            self.presenter.response(equation: equation, result: result)
+            
         }
+        
+        self.presenter.response(equation: self.expression, result: self.result)
+    }
+    
+    
+    private func sign() {
+        if let op = operation {
+            
+            if second.contains("-") { second = String(second.dropFirst()) } else { second = "-\(second)" }
+            
+            if let fir: NSNumber = Double(first) as NSNumber?, let sec: NSNumber = Double(second) as NSNumber? {
+                expression = NSMutableAttributedString(string: "\(fir)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+                expression.append(NSMutableAttributedString(string: " \(op.rawValue) ", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().operate!
+                ]))
+                expression.append(NSMutableAttributedString(string: "\(sec)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ]))
+            }
+            
+        } else {
+            
+            if first.contains("-") { first = String(first.dropFirst()) } else { first = "-\(first)" }
+            
+            if let number: NSNumber = Double(first) as NSNumber? {
+                expression = NSMutableAttributedString(string: "\(number)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+            }
+            
+        }
+    }
+    
+}
+
+
+// MARK: - Equals
+
+
+extension Interactor: InteractorEquals {
+    
+    func equals() {
+        
+        do {
+            
+            let exp = Expression(self.expression.string)
+            let solution = try exp.evaluate() as NSNumber
+            self.result = "\(solution)"
+            expression = NSMutableAttributedString(string: self.result, attributes: [
+                NSAttributedString.Key.foregroundColor : Color().miscText!
+            ])
+            
+        } catch {
+            
+            self.result = "Error"
+            expression = NSMutableAttributedString(string: "Error", attributes: [
+                NSAttributedString.Key.foregroundColor : Color().miscText!
+            ])
+            
+        }
+        
+        presenter.response(equation: self.expression, result: self.result)
+        
+        self.second = "0"
+        self.first = self.result
+        
     }
     
 }

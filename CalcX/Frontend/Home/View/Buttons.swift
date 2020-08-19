@@ -30,7 +30,7 @@ class Equal: Button {
     
     @objc private func pressed() {
         if let view = window?.rootViewController as? HomeView {
-//            view.presenter.forward(operator: .equals)
+            view.presenter.forwardEquals()
         }
     }
     
