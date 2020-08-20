@@ -32,6 +32,7 @@ protocol InteractorMiscellaneous {
 
 class Interactor {
     
+    var equalHit = false
     var first: String = "0"
     var second: String = "0"
     var operation: Operation?
@@ -59,9 +60,10 @@ extension Interactor: InteractorNumber {
     
     func number(_ num: Int) {
         if let op = operation {
-                    
+            
             second.append(String(num))
-            if let fir: NSNumber = Double(first) as NSNumber?, let sec: NSNumber = Double(second) as NSNumber? {
+            
+            if let fir: NSDecimalNumber = NSDecimalNumber(string: first), let sec: NSDecimalNumber = NSDecimalNumber(string: second) {
                 
                 expression = NSMutableAttributedString(string: "\(fir)", attributes: [
                     NSAttributedString.Key.foregroundColor : Color().miscText!
@@ -77,13 +79,15 @@ extension Interactor: InteractorNumber {
             
         } else {
             
-            first.append(String(num))
-            if let number: NSNumber = Double(first) as NSNumber? {
-                
+            if !equalHit { first.append(String(num)) } else {
+                first = String(num)
+                equalHit = false
+            }
+            
+            if let number: NSDecimalNumber = NSDecimalNumber(string: first) {
                 expression = NSMutableAttributedString(string: "\(number)", attributes: [
                     NSAttributedString.Key.foregroundColor : Color().miscText!
                 ])
-                
             }
             
         }
@@ -107,7 +111,33 @@ extension Interactor: InteractorOperation {
         
         if exp.rangeOfCharacter(from: CharacterSet(charactersIn: "-*/+")) != nil {
             
-  
+            let e = String(expression.string.filter { !" ".contains($0) })
+            if String(e.last ?? " ").rangeOfCharacter(from: CharacterSet(charactersIn: "-*/+")) != nil {
+                
+                self.operation = op
+                if let fir: NSDecimalNumber = NSDecimalNumber(string: first){
+                    expression = NSMutableAttributedString(string: "\(fir)", attributes: [
+                        NSAttributedString.Key.foregroundColor : Color().miscText!
+                    ])
+                    expression.append(NSMutableAttributedString(string: " \(op.rawValue) ", attributes: [
+                        NSAttributedString.Key.foregroundColor : Color().operate!
+                    ]))
+                }
+                
+            } else {
+            
+                equals()
+                self.operation = op
+                if let fir: NSDecimalNumber = NSDecimalNumber(string: first) {
+                    expression = NSMutableAttributedString(string: "\(fir)", attributes: [
+                        NSAttributedString.Key.foregroundColor : Color().miscText!
+                    ])
+                    expression.append(NSMutableAttributedString(string: " \(op.rawValue) ", attributes: [
+                        NSAttributedString.Key.foregroundColor : Color().operate!
+                    ]))
+                }
+                
+            }
             
             
         } else {
@@ -136,9 +166,9 @@ extension Interactor: InteractorMiscellaneous {
         case .clear:
             return
         case .decimal:
-            return
+            decimal()
         case .percent:
-            return
+            percent()
         case .sign:
             sign()
         default:
@@ -162,7 +192,7 @@ extension Interactor: InteractorMiscellaneous {
             
             if second.contains("-") { second = String(second.dropFirst()) } else { second = "-\(second)" }
             
-            if let fir: NSNumber = Double(first) as NSNumber?, let sec: NSNumber = Double(second) as NSNumber? {
+            if let fir: NSDecimalNumber = NSDecimalNumber(string: first), let sec: NSDecimalNumber = NSDecimalNumber(string: second) {
                 expression = NSMutableAttributedString(string: "\(fir)", attributes: [
                     NSAttributedString.Key.foregroundColor : Color().miscText!
                 ])
@@ -178,13 +208,95 @@ extension Interactor: InteractorMiscellaneous {
             
             if first.contains("-") { first = String(first.dropFirst()) } else { first = "-\(first)" }
             
-            if let number: NSNumber = Double(first) as NSNumber? {
+            if let number: NSDecimalNumber = NSDecimalNumber(string: first) {
                 expression = NSMutableAttributedString(string: "\(number)", attributes: [
                     NSAttributedString.Key.foregroundColor : Color().miscText!
                 ])
             }
             
         }
+    }
+    
+    private func decimal() {
+        if let op = operation {
+            
+            if second.rangeOfCharacter(from: CharacterSet(charactersIn: ".")) != nil { return }
+            
+            second.append(".")
+            
+            if let fir: NSDecimalNumber = NSDecimalNumber(string: first), let sec: NSDecimalNumber = NSDecimalNumber(string: second) {
+                
+                expression = NSMutableAttributedString(string: "\(fir)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+                expression.append(NSMutableAttributedString(string: " \(op.rawValue) ", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().operate!
+                ]))
+                expression.append(NSMutableAttributedString(string: "\(sec).", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ]))
+            }
+            
+        } else {
+            
+            if first.rangeOfCharacter(from: CharacterSet(charactersIn: ".")) != nil { return }
+            
+            first.append(".")
+            
+            if let number: NSDecimalNumber = NSDecimalNumber(string: first) {
+                expression = NSMutableAttributedString(string: "\(number).", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+                
+            }
+            
+        }
+        
+    }
+    
+    func percent() {
+        
+        do {
+            
+            let exp = Expression(self.expression.string)
+            let solution = try Float(exp.evaluate()) / 100
+            self.result = "\(solution)"
+            self.expression = NSMutableAttributedString(string: "\(self.result)", attributes: [
+                NSAttributedString.Key.foregroundColor : Color().miscText!
+            ])
+            
+        } catch {
+            
+            let exp = String(expression.string.filter { !" ".contains($0) })
+            if String(exp.last ?? " ").rangeOfCharacter(from: CharacterSet(charactersIn: "-*/+")) != nil {
+                
+                expression.append(NSMutableAttributedString(string: "\(first)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ]))
+                percent()
+                
+            } else {
+            
+                self.result = "Error"
+                expression = NSMutableAttributedString(string: "Error", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+                
+            }
+        }
+        
+        presenter.response(equation: self.expression, result: self.result)
+        
+        self.second = "0"
+        self.equalHit = true
+        self.operation = nil
+        self.first = self.result
+        
+    }
+    
+    func clear() {
+        
+        
     }
     
 }
@@ -200,24 +312,37 @@ extension Interactor: InteractorEquals {
         do {
             
             let exp = Expression(self.expression.string)
-            let solution = try exp.evaluate() as NSNumber
+            let solution = try Float(exp.evaluate())
             self.result = "\(solution)"
-            expression = NSMutableAttributedString(string: self.result, attributes: [
+            self.expression = NSMutableAttributedString(string: "\(self.result)", attributes: [
                 NSAttributedString.Key.foregroundColor : Color().miscText!
             ])
             
         } catch {
             
-            self.result = "Error"
-            expression = NSMutableAttributedString(string: "Error", attributes: [
-                NSAttributedString.Key.foregroundColor : Color().miscText!
-            ])
+            let exp = String(expression.string.filter { !" ".contains($0) })
+            if String(exp.last ?? " ").rangeOfCharacter(from: CharacterSet(charactersIn: "-*/+")) != nil {
+                
+                expression.append(NSMutableAttributedString(string: "\(first)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ]))
+                equals()
+                
+            } else {
             
+                self.result = "Error"
+                expression = NSMutableAttributedString(string: "Error", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+                
+            }
         }
         
         presenter.response(equation: self.expression, result: self.result)
         
         self.second = "0"
+        self.equalHit = true
+        self.operation = nil
         self.first = self.result
         
     }

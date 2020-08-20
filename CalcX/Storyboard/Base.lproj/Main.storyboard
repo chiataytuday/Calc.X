@@ -70,7 +70,7 @@
                                             <constraint firstItem="QVa-P4-Fqn" firstAttribute="centerX" secondItem="7Ps-t7-rxx" secondAttribute="centerX" id="6JK-2Y-KkX"/>
                                             <constraint firstItem="QVa-P4-Fqn" firstAttribute="centerY" secondItem="7Ps-t7-rxx" secondAttribute="centerY" id="EJG-XN-ohW"/>
                                             <constraint firstItem="QVa-P4-Fqn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7Ps-t7-rxx" secondAttribute="top" id="Ioi-6g-5AH"/>
-                                            <constraint firstItem="QVa-P4-Fqn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Ps-t7-rxx" secondAttribute="leading" constant="20" id="JLy-9y-wxQ"/>
+                                            <constraint firstItem="QVa-P4-Fqn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Ps-t7-rxx" secondAttribute="leading" constant="30" id="JLy-9y-wxQ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
