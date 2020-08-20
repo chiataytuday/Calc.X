@@ -164,7 +164,7 @@ extension Interactor: InteractorMiscellaneous {
     func miscellaneous(_ misc: Miscellaneous) {
         switch misc {
         case .clear:
-            return
+            clear()
         case .decimal:
             decimal()
         case .percent:
@@ -296,6 +296,30 @@ extension Interactor: InteractorMiscellaneous {
     
     func clear() {
         
+        if let op = operation {
+            
+            if let fir: NSDecimalNumber = NSDecimalNumber(string: first) {
+                
+                second = "0"
+                expression = NSMutableAttributedString(string: "\(fir)", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().miscText!
+                ])
+                expression.append(NSMutableAttributedString(string: " \(op.rawValue) ", attributes: [
+                    NSAttributedString.Key.foregroundColor : Color().operate!
+                ]))
+                
+            }
+            
+        } else {
+            
+            first = "0"
+            expression = NSMutableAttributedString(string: "0", attributes: [
+                NSAttributedString.Key.foregroundColor : Color().miscText!
+            ])
+            
+        }
+        
+        presenter.response(equation: self.expression, result: self.result)
         
     }
     
@@ -312,7 +336,7 @@ extension Interactor: InteractorEquals {
         do {
             
             let exp = Expression(self.expression.string)
-            let solution = try Float(exp.evaluate())
+            let solution = try Float(exp.evaluate()).clean
             self.result = "\(solution)"
             self.expression = NSMutableAttributedString(string: "\(self.result)", attributes: [
                 NSAttributedString.Key.foregroundColor : Color().miscText!

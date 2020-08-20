@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1834F97B24EE3EA4005AD6D9 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834F97A24EE3EA4005AD6D9 /* Float.swift */; };
 		18BCAAA724E972180088C371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCAAA624E972180088C371 /* AppDelegate.swift */; };
 		18BCAAA924E972180088C371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCAAA824E972180088C371 /* SceneDelegate.swift */; };
 		18BCAAAB24E972180088C371 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCAAAA24E972180088C371 /* HomeView.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		0F28E26A8BA5FE62DBCDC7E8 /* Pods_CalcX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalcX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1834F97A24EE3EA4005AD6D9 /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
 		18BCAAA324E972180088C371 /* CalcX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalcX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BCAAA624E972180088C371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18BCAAA824E972180088C371 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +115,6 @@
 				ED3582DA489C26A5F1A736F7 /* Pods-CalcXTests.debug.xcconfig */,
 				E5E1166959969CF9E8548C91 /* Pods-CalcXTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -269,6 +270,7 @@
 			children = (
 				18BCAAEB24E974F60088C371 /* Color.swift */,
 				18DA683E24EACD7600B07ABC /* Types.swift */,
+				1834F97A24EE3EA4005AD6D9 /* Float.swift */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -527,6 +529,7 @@
 				18BCAAA724E972180088C371 /* AppDelegate.swift in Sources */,
 				18BCAAA924E972180088C371 /* SceneDelegate.swift in Sources */,
 				18BCAAE524E973CB0088C371 /* Interactor.swift in Sources */,
+				1834F97B24EE3EA4005AD6D9 /* Float.swift in Sources */,
 				18DA683F24EACD7600B07ABC /* Types.swift in Sources */,
 				18BCAAE324E973BF0088C371 /* Presenter.swift in Sources */,
 				18BCAAEE24E98EA50088C371 /* Buttons.swift in Sources */,
