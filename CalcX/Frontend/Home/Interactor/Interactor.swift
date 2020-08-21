@@ -239,9 +239,12 @@ extension Interactor: InteractorMiscellaneous {
             
         } else {
             
-            if first.rangeOfCharacter(from: CharacterSet(charactersIn: ".")) != nil { return }
+            if (first.rangeOfCharacter(from: CharacterSet(charactersIn: ".")) != nil) && !equalHit { return }
             
-            first.append(".")
+            if !equalHit { first.append(".") } else {
+                first = "0."
+                equalHit = false
+            }
             
             if let number: NSDecimalNumber = NSDecimalNumber(string: first) {
                 expression = NSMutableAttributedString(string: "\(number).", attributes: [

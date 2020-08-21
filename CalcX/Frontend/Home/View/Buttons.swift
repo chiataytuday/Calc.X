@@ -42,7 +42,7 @@ class Operator: Button {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let op = self.titleLabel?.text ?? "+" {
+        if let op = self.titleLabel?.text {
             switch op {
             case "–":
                 self.operation = .subtract
@@ -91,7 +91,7 @@ class Misc: Button {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        if let misc = self.titleLabel?.text ?? "%" {
+        if let misc = self.titleLabel?.text {
             switch misc {
             case Miscellaneous.clear.rawValue:
                 self.misc = .clear

@@ -47,7 +47,7 @@
 /* Begin PBXFileReference section */
 		0F28E26A8BA5FE62DBCDC7E8 /* Pods_CalcX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalcX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1834F97A24EE3EA4005AD6D9 /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
-		18BCAAA324E972180088C371 /* CalcX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalcX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18BCAAA324E972180088C371 /* Calculator X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BCAAA624E972180088C371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18BCAAA824E972180088C371 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		18BCAAAA24E972180088C371 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		18BCAAA424E972180088C371 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18BCAAA324E972180088C371 /* CalcX.app */,
+				18BCAAA324E972180088C371 /* Calculator X.app */,
 				18BCAAB924E972190088C371 /* CalcXTests.xctest */,
 				18BCAAC424E972190088C371 /* CalcXUITests.xctest */,
 			);
@@ -304,7 +304,7 @@
 			);
 			name = CalcX;
 			productName = CalcX;
-			productReference = 18BCAAA324E972180088C371 /* CalcX.app */;
+			productReference = 18BCAAA324E972180088C371 /* Calculator X.app */;
 			productType = "com.apple.product-type.application";
 		};
 		18BCAAB824E972190088C371 /* CalcXTests */ = {
@@ -712,12 +712,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FW36D52GL8;
 				INFOPLIST_FILE = CalcX/Config/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Kris-Jackson-App.CalcX";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KrisJacksonApp.CalculatorX;
+				PRODUCT_NAME = "Calculator X";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -732,12 +734,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FW36D52GL8;
 				INFOPLIST_FILE = CalcX/Config/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Kris-Jackson-App.CalcX";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KrisJacksonApp.CalculatorX;
+				PRODUCT_NAME = "Calculator X";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
