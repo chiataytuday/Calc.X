@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,7 +11,7 @@
         <!--Home View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeView" customModule="CalcX" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeView" customModule="Calculator_X" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,33 +91,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6zb-R1-oDa">
                                 <rect key="frame" x="47" y="767" width="320" height="65"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOP-Y6-r2A" customClass="Misc" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOP-Y6-r2A" customClass="Misc" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="gOP-Y6-r2A" secondAttribute="height" multiplier="1:1" id="fSq-f6-iCL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="C">
                                             <color key="titleColor" red="0.76079493760000005" green="0.76475161309999995" blue="0.76078492399999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2o-DJ-dMP" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2o-DJ-dMP" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="85" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="0">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Dq-EL9" customClass="Misc" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySw-Dq-EL9" customClass="Misc" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="170" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title=".">
                                             <color key="titleColor" red="0.76079493760000005" green="0.76475161309999995" blue="0.76078492399999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTs-dZ-KyR" customClass="Equal" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KTs-dZ-KyR" customClass="Equal" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="255" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="=">
                                             <color key="titleColor" red="0.91906839610000002" green="0.31121811269999999" blue="0.26663118600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -148,33 +145,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAe-YA-ydV">
                                 <rect key="frame" x="47" y="684" width="320" height="65"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHg-uX-8dp" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHg-uX-8dp" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="vHg-uX-8dp" secondAttribute="height" multiplier="1:1" id="j6e-Sp-8R9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <state key="normal" title="1">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCu-4P-NbD" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TCu-4P-NbD" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="85" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <state key="normal" title="2">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryd-nR-nyZ" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryd-nR-nyZ" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="170" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <state key="normal" title="3">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6A-k6-CYt" customClass="Operator" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6A-k6-CYt" customClass="Operator" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="255" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                         <state key="normal" title="–">
                                             <color key="titleColor" red="0.91906839610000002" green="0.31121811269999999" blue="0.26663118600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -205,33 +198,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bU-0m-adp">
                                 <rect key="frame" x="47" y="601" width="320" height="65"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyq-zn-ZnU" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyq-zn-ZnU" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="eyq-zn-ZnU" secondAttribute="height" multiplier="1:1" id="lEq-cP-QxY"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="4">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEL-sm-zdZ" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEL-sm-zdZ" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="85" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="5">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxZ-dd-Day" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HxZ-dd-Day" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="170" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="6">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEB-Un-Jzs" customClass="Operator" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEB-Un-Jzs" customClass="Operator" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="255" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="+">
                                             <color key="titleColor" red="0.91906839610000002" green="0.31121811269999999" blue="0.26663118600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -262,33 +251,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIQ-qv-mbM">
                                 <rect key="frame" x="47" y="518" width="320" height="65"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5K-kw-NYY" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5K-kw-NYY" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="H5K-kw-NYY" secondAttribute="height" multiplier="1:1" id="Z2I-ZM-yPs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="7">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxT-UG-XQo" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxT-UG-XQo" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="85" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="8">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu2-FU-3rP" customClass="Number" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu2-FU-3rP" customClass="Number" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="170" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="9">
                                             <color key="titleColor" red="0.1176494434" green="0.1216282621" blue="0.117646791" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2W-bY-TRG" customClass="Operator" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2W-bY-TRG" customClass="Operator" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="255" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="*">
                                             <color key="titleColor" red="0.91906839610000002" green="0.31121811269999999" blue="0.26663118600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -319,33 +304,29 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gsm-5O-mhx">
                                 <rect key="frame" x="47" y="435" width="320" height="65"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxl-ih-W6e" customClass="Misc" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uxl-ih-W6e" customClass="Misc" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="uxl-ih-W6e" secondAttribute="height" multiplier="1:1" id="hId-ih-jAz"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="AC">
                                             <color key="titleColor" red="0.76079493760000005" green="0.76475161309999995" blue="0.76078492399999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xf4-XF-cNI" customClass="Misc" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xf4-XF-cNI" customClass="Misc" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="85" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="+/-">
                                             <color key="titleColor" red="0.76079493760000005" green="0.76475161309999995" blue="0.76078492399999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luh-Iq-pLA" customClass="Misc" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luh-Iq-pLA" customClass="Misc" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="170" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="%">
                                             <color key="titleColor" red="0.76079493760000005" green="0.76475161309999995" blue="0.76078492399999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obV-gV-5cd" customClass="Operator" customModule="CalcX" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obV-gV-5cd" customClass="Operator" customModule="Calculator_X" customModuleProvider="target">
                                         <rect key="frame" x="255" y="0.0" width="65" height="65"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                         <state key="normal" title="/">
                                             <color key="titleColor" red="0.91906839610000002" green="0.31121811269999999" blue="0.26663118600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
@@ -403,7 +384,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="formula" destination="0I4-fF-cas" id="NKX-n0-xaJ"/>
+                        <outlet property="formula" destination="0I4-fF-cas" id="ms4-QG-Ur3"/>
                         <outlet property="logo" destination="kkE-3a-fm6" id="eyL-xT-cQc"/>
                         <outlet property="number" destination="MoA-N5-EIW" id="nnC-vQ-T1f"/>
                         <outlet property="resultBackground" destination="EUD-wL-wAW" id="feY-os-AUs"/>

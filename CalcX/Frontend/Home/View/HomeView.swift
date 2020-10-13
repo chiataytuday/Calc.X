@@ -27,8 +27,8 @@ class HomeView: UIViewController {
     }
     
     private func modeManager() {
-        view.backgroundColor = Color().main
-        resultBackground.backgroundColor = Color().background
+        view.backgroundColor = Color.main
+        resultBackground.backgroundColor = Color.background
         formatLogo()
         formatToggle()
         formatFormula()
@@ -37,11 +37,11 @@ class HomeView: UIViewController {
 
     private func formatLogo() {
         let attrString = NSMutableAttributedString(string: "Calc ", attributes: [
-            NSAttributedString.Key.foregroundColor: Color().logo_primary!,
+            NSAttributedString.Key.foregroundColor: Color.logo_primary,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold),
         ])
         attrString.append(NSAttributedString(string: "X", attributes: [
-            NSAttributedString.Key.foregroundColor: Color().logo_secondary!,
+            NSAttributedString.Key.foregroundColor: Color.logo_secondary,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .bold),
         ]))
         logo.attributedText = attrString
@@ -49,16 +49,20 @@ class HomeView: UIViewController {
     
     private func formatToggle() {
         toggle.isHidden = true
-        toggle.tintColor = Color().logo_primary
+        toggle.tintColor = Color.logo_primary
         toggle.setImage(UIImage(systemName: mode.rawValue), for: .normal)
     }
     
     private func formatFormula() {
-        
+        formula.text = "0"
+        formula.textColor = Color.miscText
+        formula.font = .systemFont(ofSize: 18, weight: .semibold)
     }
     
     private func formatNumber() {
-        
+        number.text = "0"
+        number.textColor = Color.number
+        number.font = .systemFont(ofSize: 45, weight: .bold)
     }
 }
 

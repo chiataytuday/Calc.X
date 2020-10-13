@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18210CE0253635860033750A /* Screen Shot 2020-10-13 at 2.15.53 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 18210CDF253635860033750A /* Screen Shot 2020-10-13 at 2.15.53 PM.png */; };
 		1834F97B24EE3EA4005AD6D9 /* Float.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1834F97A24EE3EA4005AD6D9 /* Float.swift */; };
 		18BCAAA724E972180088C371 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCAAA624E972180088C371 /* AppDelegate.swift */; };
 		18BCAAA924E972180088C371 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BCAAA824E972180088C371 /* SceneDelegate.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		0F28E26A8BA5FE62DBCDC7E8 /* Pods_CalcX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalcX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18210CDF253635860033750A /* Screen Shot 2020-10-13 at 2.15.53 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2020-10-13 at 2.15.53 PM.png"; sourceTree = "<group>"; };
 		1834F97A24EE3EA4005AD6D9 /* Float.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Float.swift; sourceTree = "<group>"; };
 		18BCAAA324E972180088C371 /* Calculator X.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculator X.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BCAAA624E972180088C371 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		18210CDE253635770033750A /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				18210CDF253635860033750A /* Screen Shot 2020-10-13 at 2.15.53 PM.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		18BCAA9A24E972180088C371 = {
 			isa = PBXGroup;
 			children = (
@@ -145,10 +155,10 @@
 			children = (
 				18BCAADA24E973280088C371 /* Assets */,
 				18BCAAD924E972DF0088C371 /* Config */,
-				18BCAAE024E973940088C371 /* Entities */,
 				18BCAAD624E972960088C371 /* Frontend */,
 				18BCAAEA24E9741C0088C371 /* Globals */,
 				18BCAAD824E972CD0088C371 /* Storyboard */,
+				18210CDE253635770033750A /* Screenshots */,
 			);
 			path = CalcX;
 			sourceTree = "<group>";
@@ -248,13 +258,6 @@
 				18BCAAE424E973CB0088C371 /* Interactor.swift */,
 			);
 			path = Interactor;
-			sourceTree = "<group>";
-		};
-		18BCAAE024E973940088C371 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
 			sourceTree = "<group>";
 		};
 		18BCAAE124E9739B0088C371 /* Router */ = {
@@ -395,6 +398,7 @@
 			files = (
 				18BCAAB324E972180088C371 /* LaunchScreen.storyboard in Resources */,
 				18BCAAB024E972180088C371 /* Assets.xcassets in Resources */,
+				18210CE0253635860033750A /* Screen Shot 2020-10-13 at 2.15.53 PM.png in Resources */,
 				18BCAAAE24E972180088C371 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

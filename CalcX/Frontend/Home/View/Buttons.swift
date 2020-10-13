@@ -25,12 +25,38 @@ class Equal: Button {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layer.borderWidth = 5
+        self.backgroundColor = Color.equal_background
+        self.setTitleColor(Color.main, for: .normal)
+        self.layer.borderColor = Color.equal_border.cgColor
         self.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchDragExit)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchDown), for: .touchDown)
+        self.addTarget(self, action: #selector(touchDown), for: .touchDragEnter)
     }
     
     @objc private func pressed() {
         if let view = window?.rootViewController as? HomeView {
             view.presenter.forwardEquals()
+        }
+    }
+    
+    @objc private func touchRelease() {
+        self.setTitleColor(Color.main, for: .normal)
+        UIView.animate(withDuration: 0.2) {
+            self.layer.borderColor = Color.equal_border.cgColor
+            self.backgroundColor = Color.equal_background
+            self.layoutSubviews()
+        }
+    }
+    
+    @objc private func touchDown() {
+        self.setTitleColor(Color.operate, for: .normal)
+        UIView.animate(withDuration: 0.2) {
+            self.backgroundColor = Color.equal_border
+            self.layoutSubviews()
         }
     }
     
@@ -54,12 +80,33 @@ class Operator: Button {
                 self.operation = .add
             }
         }
+        self.setTitleColor(Color.operate, for: .normal)
         self.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchDragExit)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchDown), for: .touchDown)
+        self.addTarget(self, action: #selector(touchDown), for: .touchDragEnter)
     }
     
     @objc private func pressed() {
         if let view = window?.rootViewController as? HomeView {
             view.presenter.forward(operator: operation)
+        }
+    }
+    
+    @objc private func touchRelease() {
+        UIView.animate(withDuration: 0.2) {
+            self.layer.borderWidth = 0
+            self.backgroundColor = .clear
+            self.layoutSubviews()
+        }
+    }
+    
+    @objc private func touchDown() {
+        UIView.animate(withDuration: 0.2) {
+            self.backgroundColor = Color.operate_border
+            self.layoutSubviews()
         }
     }
     
@@ -74,12 +121,35 @@ class Number: Button {
         if let number = Int(self.titleLabel?.text ?? "0") {
             self.number = number
         }
+        self.setTitleColor(Color.number, for: .normal)
         self.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchDragExit)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchDown), for: .touchDown)
+        self.addTarget(self, action: #selector(touchDown), for: .touchDragEnter)
     }
     
     @objc private func pressed() {
         if let view = window?.rootViewController as? HomeView {
             view.presenter.forward(number: number)
+        }
+    }
+    
+    @objc private func touchRelease() {
+        UIView.animate(withDuration: 0.2) {
+            self.layer.borderWidth = 0
+            self.backgroundColor = .clear
+            self.layoutSubviews()
+        }
+    }
+    
+    @objc private func touchDown() {
+        UIView.animate(withDuration: 0.2) {
+            self.layer.borderWidth = 5
+            self.layer.borderColor = Color.number_border.cgColor
+            self.backgroundColor = Color.number_background
+            self.layoutSubviews()
         }
     }
     
@@ -105,12 +175,38 @@ class Misc: Button {
                 self.misc = .allClear
             }
         }
+        self.setTitleColor(Color.miscText, for: .normal)
         self.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        self.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchDragExit)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchUpOutside)
+        self.addTarget(self, action: #selector(touchRelease), for: .touchUpInside)
+        self.addTarget(self, action: #selector(touchDown), for: .touchDown)
+        self.addTarget(self, action: #selector(touchDown), for: .touchDragEnter)
     }
     
     @objc private func pressed() {
         if let view = window?.rootViewController as? HomeView {
             view.presenter.forward(miscellaneous: misc)
+        }
+    }
+    
+    @objc private func touchRelease() {
+        self.setTitleColor(Color.miscText, for: .normal)
+        UIView.animate(withDuration: 0.2) {
+            self.layer.borderWidth = 0
+            self.backgroundColor = .clear
+            self.layoutSubviews()
+        }
+    }
+    
+    @objc private func touchDown() {
+        self.setTitleColor(Color.miscText_dark, for: .normal)
+        UIView.animate(withDuration: 0.2) {
+            self.layer.borderWidth = 5
+            self.layer.borderColor = Color.number_border.cgColor
+            self.backgroundColor = Color.number_background
+            self.layoutSubviews()
         }
     }
     
